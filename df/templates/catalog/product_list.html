@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Каталог букетов</h1>
+<ul>
+    {% for product in products %}
+        <li>
+            <h2>{{ product.name }}</h2>
+            <p>Цена: {{ product.price }} руб.</p>
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200">
+            {% endif %}
+            <p>{{ product.description }}</p>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

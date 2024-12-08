@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Корзина</h1>
+  <ul>
+    {% for item in products %}
+      <li>
+        {{ item.product.name }} — {{ item.quantity }} шт. — {{ item.product.price }} руб.
+      </li>
+    {% endfor %}
+  </ul>
+  <p>Итого: {{ total }} руб.</p>
+  <a href="{% url 'place_order' %}">Оформить заказ</a>
+{% endblock %}
