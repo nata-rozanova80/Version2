@@ -1,13 +1,15 @@
+# catalog/urls.py
 from django.urls import path
 from .views import product_list
-from .views import view_cart
+from .views import view_cart, add_to_cart
 from .views import index
 
 urlpatterns = [
-    path('', index, name='index'),  # Главная страница
-    path('products/', product_list, name='product_list'),
+
+    path('', product_list, name='product_list'),  # Список продуктов
 
 # Другие маршруты...
+    path('add-to-cart/', add_to_cart, name='add_to_cart'),
     path('cart/', view_cart, name='view_cart'),
 ]
 

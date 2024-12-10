@@ -1,9 +1,14 @@
+# main/views.py
 
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from .forms import UserRegisterForm
+
+from django import forms
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
+
 
 
 def index(request):

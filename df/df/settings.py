@@ -18,6 +18,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Настройки для сообщений
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.DEBUG: 'secondary',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
+}
 
 # Application definition
 
@@ -119,7 +128,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/'  # Перенаправление после входа
-LOGOUT_REDIRECT_URL = '/'  # Перенаправление после выхода
+LOGIN_REDIRECT_URL = 'product_list'  # Перенаправление после входа
+LOGOUT_REDIRECT_URL = 'index'  # Перенаправление после выхода
 
 AUTH_USER_MODEL = 'users.User'

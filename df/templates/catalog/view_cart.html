@@ -1,15 +1,21 @@
-
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Корзина</h1>
-  <ul>
-    {% for item in products %}
-      <li>
-        {{ item.product.name }} — {{ item.quantity }} шт. — {{ item.product.price }} руб.
-      </li>
-    {% endfor %}
-  </ul>
-  <p>Итого: {{ total }} руб.</p>
-  <a href="{% url 'place_order' %}">Оформить заказ</a>
+<h1>Ваша корзина</h1>
+{% if cart_items %}
+    <ul class="list-group mb-4">
+        {% for item in cart_items %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <h5>{{ item.product.name }}</h5>
+                    <p>Количество: {{ item.quantity }}</p>
+                </div>
+                <span>{{ item.subtotal }} руб.</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <h3>Общая сумма: {{ total }} руб.</h3>
+{% else %}
+    <p>Ваша корзина пуста.</p>
+{% endif %}
 {% endblock %}
