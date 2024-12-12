@@ -7,6 +7,15 @@ from .views import register, my_logout
 urlpatterns = [
     path('register/', register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
-    #path('logout/', auth_views.LogoutView.as_view(next_page='index'), name='logout'), # с этой не работало
     path('logout/', my_logout, name='logout'),  # Используем нашу новую вьюху
 ]
+
+
+# from django.contrib import admin
+# from django.urls import path, include
+#
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('users/', include('users.urls')),  # Подключаем маршруты приложения users
+#     path('', include('catalog.urls')),  # Подключаем маршруты каталога
+# ]

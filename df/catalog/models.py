@@ -9,6 +9,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     image = models.ImageField(upload_to='products/', blank=True, verbose_name='Изображение')
     description = models.TextField(blank=True, verbose_name='Описание')
+    stock = models.PositiveIntegerField(default=0, verbose_name='Количество на складе')  # Поле stock
 
     def __str__(self):
         return self.name

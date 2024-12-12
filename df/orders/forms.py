@@ -1,14 +1,22 @@
+# orders/forms.py
+
 from django import forms
 from .models import Order
 
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['user', 'status']
+        fields = ['recipient_name', 'phone', 'address', 'comment']
         widgets = {
-            'status': forms.HiddenInput(),  # Устанавливаем статус скрытым, чтобы он был "pending" по умолчанию
+            'recipient_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'phone': forms.TextInput(attrs={'class': 'form-control'}),
+            'address': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'comment': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
         }
-
-    # Поля для ввода данных пользователя (если он не зарегистрирован)
-    address = forms.CharField(max_length=255, required=True, label='Адрес доставки')
-    phone = forms.CharField(max_length=15, required=True, label='Телефон')
+class OrderStatusForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['status']
+        widgets = {
+            'status': forms.Select(choices=Order.STATUS_CHOICES)
+        }

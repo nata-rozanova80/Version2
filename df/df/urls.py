@@ -11,6 +11,7 @@ urlpatterns = [
 
     path('catalog/', include('catalog.urls')),  # Подключаем маршруты приложения catalog
     path('users/', include('users.urls')),  # Подключение пользователей
+    path('orders/', include('orders.urls')),  # Подключаем приложение orders
 ]
 
 if settings.DEBUG:

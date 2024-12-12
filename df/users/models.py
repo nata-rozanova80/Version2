@@ -8,6 +8,7 @@ class User(AbstractUser):
     phone = models.CharField(max_length=15, blank=True)
     address = models.TextField(blank=True)
     teleg = models.CharField(max_length=50,blank=True)
+    email = models.EmailField(unique=True)
 
     def __str__(self):
         return self.username

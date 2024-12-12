@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             name='Order',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('status', models.CharField(choices=[('pending', 'Pending'), ('shipped', 'Shipped'), ('delivered', 'Delivered'), ('cancelled', 'Cancelled')], default='pending', max_length=20)),
+                ('status', models.CharField(choices=[('pending', 'Просматриваемый'), ('shipped', 'Отгружен'), ('delivered', 'Доставлен'), ('cancelled', 'Отменен')], default='pending', max_length=20)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
             ],
         ),
