@@ -11,6 +11,7 @@
         :root {
             --nav-height: 3rem;
             --header-height: 3rem;
+            --sub-header-height: 3rem; /* Высота нового подзаголовка */
         }
 
         body {
@@ -31,20 +32,31 @@
             color: white;
             display: flex;
             justify-content: space-around;
+            align-items: center; /* Вертикальное выравнивание */
             padding: 0.5rem 0;
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 999;
+            z-index: 1000; /* Повышенный z-index для поверх всех элементов */
             height: var(--nav-height);
         }
         nav a {
             color: white;
             text-decoration: none;
-            padding: 0.5rem;
+            padding: 0.5rem 1rem; /* Увеличенный padding для удобства клика */
+            border-radius: 4px; /* Слегка скругленные углы */
+            transition: background 0.3s;
         }
         nav a:hover {
             background: #4CAF50;
+        }
+        /* Новый стиль для подзаголовка */
+        .sub-header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            height: var(--sub-header-height);
         }
         footer {
             background: #333;
@@ -56,14 +68,12 @@
             width: 100%;
         }
         .container {
-            padding: calc(var(--nav-height) + var(--header-height) + 1rem) 2rem 4rem 2rem;
+            padding: calc(var(--nav-height) + var(--sub-header-height)) 2rem 4rem 2rem;
+            /* Увеличен верхний отступ для учета фиксированного nav и sub-header */
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Добро пожаловать в магазин цветов</h1>
-    </header>
     <nav>
         <a href="{% url 'index' %}">Главная</a>
         <a href="{% url 'product_list' %}">Каталог</a>
@@ -76,6 +86,12 @@
             <a href="{% url 'register' %}">Регистрация</a>
         {% endif %}
     </nav>
+
+    <!-- Новый подзаголовок ниже меню -->
+    <div class="sub-header">
+        <h2>Добро пожаловать в магазин цветов!</h2>
+    </div>
+
     <div class="container">
         <!-- Отображение сообщений -->
         {% if messages %}

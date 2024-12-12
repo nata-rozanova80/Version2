@@ -1,3 +1,4 @@
+<!-- templates/view_cart.html -->
 {% extends 'base.html' %}
 
 {% block content %}
@@ -15,6 +16,10 @@
         {% endfor %}
     </ul>
     <h3>Общая сумма: {{ total }} руб.</h3>
+    <!-- Кнопка оформления заказа -->
+    {% if user.is_authenticated %}
+        <a href="{% url 'checkout' %}" class="btn btn-primary">Оформить заказ</a>
+    {% endif %}
 {% else %}
     <p>Ваша корзина пуста.</p>
 {% endif %}
